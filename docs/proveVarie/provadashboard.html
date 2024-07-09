@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* styles.css */
+
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            transition: all 0.3s;
+        }
+
+        h1,
+        h2,
+        h4,
+        .nav-link {
+            font-weight: 600;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link span {
+            margin-right: 8px;
+        }
+
+        .nav-link:hover span,
+        .nav-link.active span {
+            color: #007bff;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            z-index: 1000;
+            overflow-x: hidden;
+            background: linear-gradient(180deg, #343a40, #212529);
+            transition: all 0.3s;
+            padding-top: 20px;
+        }
+
+        .sidebar .nav-link {
+            color: #ccc;
+            margin-bottom: 10px;
+            transition: color 0.3s, background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            color: #fff;
+            background-color: #495057;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar .sidebar-sticky h4 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar .voting-times {
+            border-top: 1px solid #495057;
+            padding-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .sidebar .btn {
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Header Resize Button */
+        .header-resize {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            right: -15px;
+            width: 30px;
+            height: 30px;
+            background-color: #6c757d;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        .header-resize:hover {
+            background-color: #5a6268;
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 15px 15px 0 0;
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        /* Responsive Sidebar */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            main {
+                margin-left: 0;
+            }
+        }
+
+        /* Sidebar Resize Script */
+        .resized-sidebar {
+            width: 80px;
+        }
+
+        .resized-sidebar .nav-link span {
+            display: none;
+        }
+
+        .resized-sidebar .nav-link {
+            text-align: center;
+        }
+
+        .resized-sidebar .nav-link::before {
+            display: inline-block;
+            margin-right: 0;
+        }
+
+        .resized-sidebar .sidebar-sticky h4 {
+            display: none;
+        }
+
+        .resized-sidebar .voting-times {
+            display: none;
+        }
+
+        .resized-sidebar .btn {
+            display: none;
+        }
+
+        .navbar-top {
+            background-color: #343a40;
+            color: #fff;
+            padding: 0.75rem 1rem;
+        }
+
+        .navbar-top .navbar-brand {
+            color: #fff;
+        }
+
+        .navbar-top .nav-item .nav-link {
+            color: #fff;
+        }
+
+        .navbar-top .dropdown-menu {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        .navbar-top .dropdown-item {
+            color: #fff;
+        }
+
+        .navbar-top .dropdown-item:hover {
+            background-color: #495057;
+        }
+
+        .sidebar-toggle-btn {
+            display: none;
+            margin-right: 10px;
+            color: #fff;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-toggle-btn {
+                display: inline;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-top">
+        <button class="sidebar-toggle-btn" id="sidebarToggle">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Voting Dashboard</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Account
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-dark sidebar" id="sidebar">
+                <div class="sidebar-sticky sidebar-nav">
+                    <h4 class="text-white text-center py-4">Header</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active sidebar-link" href="#">
+                                <span data-feather="home"></span>
+                                Panoramica
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sidebar-link" href="#">
+                                <span data-feather="settings"></span>
+                                Impostazioni
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sidebar-link" href="#">
+                                <span data-feather="check-circle"></span>
+                                Voto
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sidebar-link" href="#">
+                                <span data-feather="users"></span>
+                                Elettori
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sidebar-link" href="#">
+                                <span data-feather="bar-chart-2"></span>
+                                Risultati
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="voting-times px-3 mt-4 text-white">
+                        <p>Inizio votazione: <br> 12:00 12/12/2024</p>
+                        <p>Fine votazione: <br> 12:00 12/12/2024</p>
+                    </div>
+                    <a href="#" class="btn btn-primary w-100 mt-auto mb-4">Indietro</a>
+                </div>
+                <button class="header-resize" id="resizeButton">&lt;</button>
+            </nav>
+            <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4 main-content">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom header">
+                    <h1 class="h2">Voting Title</h1>
+                    <button class="btn btn-success">Attiva</button>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                Line Chart
+                            </div>
+                            <div class="card-body">
+                                <canvas id="lineChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                Pie Chart
+                            </div>
+                            <div class="card-body">
+                                <canvas id="pieChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                Additional Chart 1
+                            </div>
+                            <div class="card-body">
+                                <canvas id="additionalChart1"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                Additional Chart 2
+                            </div>
+                            <div class="card-body">
+                                <canvas id="additionalChart2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer class="footer bg-dark text-white text-center py-3">
+        Footer
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lineCtx = document.getElementById('lineChart').getContext('2d');
+            const pieCtx = document.getElementById('pieChart').getContext('2d');
+            const additionalCtx1 = document.getElementById('additionalChart1').getContext('2d');
+            const additionalCtx2 = document.getElementById('additionalChart2').getContext('2d');
+
+            new Chart(lineCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4'],
+                    datasets: [{
+                        label: 'Category 1',
+                        data: [40, 35, 50, 45],
+                        borderColor: 'rgba(52, 152, 219, 1)',
+                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                        fill: true
+                    }, {
+                        label: 'Category 2',
+                        data: [30, 25, 35, 40],
+                        borderColor: 'rgba(46, 204, 113, 1)',
+                        backgroundColor: 'rgba(46, 204, 113, 0.2)',
+                        fill: true
+                    }, {
+                        label: 'Category 3',
+                        data: [20, 40, 30, 35],
+                        borderColor: 'rgba(231, 76, 60, 1)',
+                        backgroundColor: 'rgba(231, 76, 60, 0.2)',
+                        fill: true
+                    }]
+                }
+            });
+
+            new Chart(pieCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5'],
+                    datasets: [{
+                        data: [10, 20, 30, 25, 15],
+                        backgroundColor: ['#3498db', '#2ecc71', '#e74c3c', '#9b59b6', '#f1c40f']
+                    }]
+                }
+            });
+
+            new Chart(additionalCtx1, {
+                type: 'bar',
+                data: {
+                    labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4'],
+                    datasets: [{
+                        label: 'Dataset 1',
+                        data: [12, 19, 3, 5],
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Dataset 2',
+                        data: [2, 29, 5, 5],
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            new Chart(additionalCtx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    datasets: [{
+                        label: 'Dataset 1',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            const sidebar = document.getElementById('sidebar');
+            const resizeButton = document.getElementById('resizeButton');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+
+            resizeButton.addEventListener('click', () => {
+                sidebar.classList.toggle('resized-sidebar');
+                if (sidebar.classList.contains('resized-sidebar')) {
+                    resizeButton.innerHTML = '&gt;';
+                } else {
+                    resizeButton.innerHTML = '&lt;';
+                }
+            });
+
+            sidebarToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('resized-sidebar');
+                if (sidebar.classList.contains('resized-sidebar')) {
+                    resizeButton.innerHTML = '&gt;';
+                } else {
+                    resizeButton.innerHTML = '&lt;';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

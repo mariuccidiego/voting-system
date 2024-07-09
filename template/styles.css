@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --sidebar-width: 270px;
+        }
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f6f8fa;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            /* Aggiunto per estendere l'altezza della pagina */
+        }
+
+        .navbar-light {
+            background-color: white;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        .navbar-light .navbar-brand {
+            color: rgba(0, 0, 0, .9);
+            font-weight: 500;
+            font-size: 2rem;
+        }
+
+        .profile-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: #242526;
+            flex-shrink: 0;
+            height: 100vh;
+            /* Modificato per estendere l'altezza della sidebar */
+            padding-top: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .right-site {
+            margin-left: var(--sidebar-width);
+            flex-grow: 1;
+            /* Aggiunto per garantire che il contenuto riempia lo spazio rimanente */
+        }
+
+        .sidebar-link {
+            color: #ffffff;
+            padding: 10px 20px;
+            margin: 5px 0;
+        }
+
+        .sidebar-link:hover {
+            color: white;
+            background-color: #495057;
+            border-radius: 5px;
+        }
+
+        .sidebar .nav-item .active {
+            color: white;
+            background-color: #3a3b3c;
+            border-radius: 5px;
+        }
+
+        .voting-times {
+            border-top: 1px solid #444;
+            padding-top: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-logo img {
+            height: 65px;
+        }
+
+        .nav-item {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .voting-times {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .voting-times p {
+            color: white;
+        }
+
+        #indietro {
+            margin: 10px;
+        }
+
+        #indietro svg {
+            margin-right: 10px;
+        }

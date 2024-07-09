@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sito Semplice con Bootstrap</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra Laterale -->
+    <div class="sidebar d-flex flex-column">
+        <div class="sidebar-logo">
+            <img src="logo_vote.png" class="site-logo" alt="site logo">
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link sidebar-link" href="dashboard_panoramica.html">
+                    <i class="fas fa-home"></i>
+                    Panoramica
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link" href="dashboard_impostazioni.html">
+                    <i class="fas fa-cog"></i>
+                    Impostazioni
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active sidebar-link" href="dashboard_voto.html">
+                    <i class="fas fa-check-circle"></i>
+                    Voto
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link" href="dashboard_elettori.html">
+                    <i class="fas fa-users"></i>
+                    Elettori
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link" href="dashboard_risultati.html">
+                    <i class="fas fa-chart-bar"></i>
+                    Risultati
+                </a>
+            </li>
+        </ul>
+        <div class="voting-times mt-auto">
+            <p><b>Inizio votazione:</b><br> 12:00 12/12/2024</p>
+            <p><b>Fine votazione:</b> <br> 12:00 12/12/2024</p>
+        </div>
+        <a href="#" class="btn btn-primary" id="indietro"> <i class="fas fa-angle-left"></i>Torna alle Votazioni</a>
+    </div>
+
+    <!-- Contenuto della Pagina -->
+    <div class="right-site">
+        <!-- Barra Superiore -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">Titolo Votazione</a>
+            <div class="ml-auto dropdown">
+                <a href="#" class="d-flex align-items-center text-white" id="profileDropdown" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <img src="https://via.placeholder.com/50" class="profile-image" alt="Profile Image">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+                    <a class="dropdown-item" href="#">Profilo</a>
+                    <a class="dropdown-item" href="#">Impostazioni</a>
+                    <a class="dropdown-item" href="#">Logout</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenuto Principale -->
+        <div class="content">
+            <div class="container mt-4">
+                <h1>Contenuto Principale</h1>
+                <p>Qui va il contenuto della pagina.</p>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+                                Area Chart Example
+                            </div>
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+                                Area Chart Example
+                            </div>
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+
+</html>
