@@ -6,3 +6,46 @@ https://wireframepro.mockflow.com/editor.jsp?editor=on&spaceid=7e346b7821a845b3a
 
 
 https://www.youtube.com/watch?v=iEasMXu72No
+
+https://codepen.io/piyushpd139/pen/PooPByb
+
+
+generali
+-Titolo
+-descrizione
+-immagine
+
+data
+-Inizio
+-Fine
+-time zone
+
+votazione
+-tipo votazione [
+    -votazione classica(candidato)
+    -votazione con liste(solo liste)
+    -voto candidato e lista
+    -voto candidato, lista e candidati di lista
+    -risposta libera
+    -sondaggio (lista di proposte)
+    -referendum
+]
+-voto pesato
+-voto palese
+-scheda bianca
+-voto disgiunto
+-voto con parità di genere(Richiederà di specificare il sesso del candidato)
+-delega del voto
+
+email
+
+Risultati
+
+avanzate
+-archivia 
+-elimina
+
+
+
+
+votante username = nome-cognome-[numero casuale di 4 o 5 caratteri]
