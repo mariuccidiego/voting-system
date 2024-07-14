@@ -24,8 +24,15 @@
         .list-group-item .list-group {
             margin-top: 15px;
         }
-        #logo-partiti{
+
+        #logo-partiti {
             height: 50px;
+        }
+        #card-lista{
+            width: 21rem;
+        }
+        .candidati .card-candidato {
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -114,8 +121,372 @@
                         </button>
                     </div>
 
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex flex-column align-items-start">
+                    <div class="card card-candidato">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <div class="d-flex justify-content-between align-items-center w-100">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/50" class="mr-3" alt="Candidate 1">
+                                    <div>
+                                        <h5>Nome Candidato 1</h5>
+                                    </div>
+                                </div>
+                                <div class="navbar">
+                                    <button class="btn btn-link" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
+                                        <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-info" data-toggle="modal" data-target="#addListModal1">
+                                    <i class="fas fa-plus-circle"></i> Aggiungi Lista
+                                </button>
+                                <div class="d-flex flex-wrap mt-2" id="liste-elenco">
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <img src="Patto_per_l'Italia.svg.png" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 1</span>
+                                                <div class="navbar">
+                                                    <button class="btn btn-link" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton2">
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <button class="btn btn-success" data-toggle="modal" data-target="#addCandidateModal" style="width: 100%;">
+                                                <i class="fas fa-user-plus"></i> Aggiungi Candidato di lista
+                                            </button>
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 1 Lista 1
+                                                    <div class="navbar">
+                                                        <button class="btn btn-link" type="button" id="dropdownMenuButton21" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton21">
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 2 Lista 1
+                                                    <div class="navbar">
+                                                        <button class="btn btn-link" type="button" id="dropdownMenuButton22" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton22">
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 3 Lista 1
+                                                    <div class="navbar">
+                                                        <button class="btn btn-link" type="button" id="dropdownMenuButton23" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton23">
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <img src="Federazione_dei_Liberali_(Italia,_1994).svg.png" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 2</span>
+                                                <div class="navbar">
+                                                    <button class="btn btn-link" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton3">
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <button class="btn btn-success" data-toggle="modal" data-target="#addCandidateModal" style="width: 100%;">
+                                                <i class="fas fa-user-plus"></i> Aggiungi Candidato di lista
+                                            </button>
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 1 Lista 2
+                                                    <div class="navbar">
+                                                        <button class="btn btn-link" type="button" id="dropdownMenuButton31" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton31">
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 2 Lista 2
+                                                    <div class="navbar">
+                                                        <button class="btn btn-link" type="button" id="dropdownMenuButton32" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton32">
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 3 Lista 2
+                                                    <div class="navbar">
+                                                        <button class="btn btn-link" type="button" id="dropdownMenuButton33" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton33">
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 3</span>
+                                                <div class="navbar">
+                                                    <button class="btn btn-link" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton4">
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <button class="btn btn-success" data-toggle="modal" data-target="#addCandidateModal" style="width: 100%;">
+                                                <i class="fas fa-user-plus"></i> Aggiungi Candidato di lista
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 4</span>
+                                                <div class="navbar">
+                                                    <button class="btn btn-link" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton5">
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <button class="btn btn-success" data-toggle="modal" data-target="#addCandidateModal" style="width: 100%;">
+                                                <i class="fas fa-user-plus"></i> Aggiungi Candidato di lista
+                                            </button>
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 1 Lista 4
+                                                    <div class="navbar">
+                                                        <button class="btn btn-link" type="button" id="dropdownMenuButton51" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton51">
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 2 Lista 4
+                                                    <div class="navbar">
+                                                        <button class="btn btn-link" type="button" id="dropdownMenuButton52" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton52">
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 3 Lista 4
+                                                    <div class="navbar">
+                                                        <button class="btn btn-link" type="button" id="dropdownMenuButton53" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton53">
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card card-candidato">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <div class="d-flex justify-content-between align-items-center w-100">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/50" class="mr-3" alt="Candidate 1">
+                                    <div>
+                                        <h5>Nome Candidato 1</h5>
+                                    </div>
+                                </div>
+                                <div class="navbar">
+                                    <button class="btn btn-link" type="button" id="dropdownMenuButton1"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right"
+                                        aria-labelledby="dropdownMenuButton1">
+                                        <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-info" data-toggle="modal" data-target="#addListModal1">
+                                    <i class="fas fa-plus-circle"></i> Aggiungi Lista
+                                </button>
+                                <div class="d-flex flex-wrap mt-2" id="liste-elenco">
+                                    <div class="card mr-2 mb-2" id="card-lista">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <img src="Patto_per_l'Italia.svg.png" class="mr-3" alt="Candidate 1"
+                                                id="logo-partiti">
+                                            <span>poartito fare per fermare il declino</span>
+                                            <div class="navbar">
+                                                <button class="btn btn-link" type="button" id="dropdownMenuButton2"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdownMenuButton2">
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-edit"></i>
+                                                        Modifica</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-trash"></i>
+                                                        Elimina</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Aggiungi più liste qui -->
+                                    <div class="card mr-2 mb-2" id="card-lista">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <img src="Federazione_dei_Liberali_(Italia,_1994).svg.png" class="mr-3"
+                                                alt="Candidate 1" id="logo-partiti">
+                                            <span>Nome Lista 2</span>
+                                            <div class="navbar">
+                                                <button class="btn btn-link" type="button" id="dropdownMenuButton3"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdownMenuButton3">
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-edit"></i>
+                                                        Modifica</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-trash"></i>
+                                                        Elimina</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2" id="card-lista">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1"
+                                                id="logo-partiti">
+                                            <span>Nome Lista 3</span>
+                                            <div class="navbar">
+                                                <button class="btn btn-link" type="button" id="dropdownMenuButton4"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdownMenuButton4">
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-edit"></i>
+                                                        Modifica</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-trash"></i>
+                                                        Elimina</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2" id="card-lista">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1"
+                                                id="logo-partiti">
+                                            <span>Nome Lista 3</span>
+                                            <div class="navbar">
+                                                <button class="btn btn-link" type="button" id="dropdownMenuButton4"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdownMenuButton4">
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-edit"></i>
+                                                        Modifica</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-trash"></i>
+                                                        Elimina</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-candidato">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <div class="d-flex justify-content-between align-items-center w-100">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/50" class="mr-3" alt="Candidate 1">
+                                    <div>
+                                        <h5>Nome Candidato 1</h5>
+                                    </div>
+                                </div>
+                                <div class="navbar">
+                                    <button class="btn btn-link" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
+                                        <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="card card-candidato">
+                        <div class="card-body d-flex flex-column align-items-start">
                             <div class="d-flex justify-content-between align-items-center w-100">
                                 <div class="d-flex align-items-center">
                                     <img src="https://via.placeholder.com/50" class="mr-3" alt="Candidate 1">
@@ -140,61 +511,262 @@
                                 <button class="btn btn-info" data-toggle="modal" data-target="#addListModal1">
                                     <i class="fas fa-plus-circle"></i> Aggiungi Lista
                                 </button>
-                                <ul class="list-group list-group-horizontal" id="liste-elenco">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <img src="Patto_per_l'Italia.svg.png" class="mr-3" alt="Candidate 1" id="logo-partiti">
-                                        <span>Nome Lista 1</span>
-                                        <div class="navbar">
-                                            <button class="btn btn-link" type="button" id="dropdownMenuButton2"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right"
-                                                aria-labelledby="dropdownMenuButton2">
-                                                <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
-                                                <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                <div class="d-flex flex-wrap mt-2 w-100" id="liste-elenco">
+                                    <div class="card mb-2 w-100" id="card-lista">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <img src="Patto_per_l'Italia.svg.png" class="mr-3" alt="Candidate 1"
+                                                id="logo-partiti">
+                                            <span>Partito Fare per Fermare il Declino</span>
+                                            <div class="navbar">
+                                                <button class="btn btn-link" type="button" id="dropdownMenuButton2"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdownMenuButton2">
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-edit"></i>
+                                                        Modifica</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-trash"></i>
+                                                        Elimina</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </li>
+                                    </div>
                                     <!-- Aggiungi più liste qui -->
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <img src="Federazione_dei_Liberali_(Italia,_1994).svg.png" class="mr-3" alt="Candidate 1" id="logo-partiti">
-                                        <span>Nome Lista 1</span>
-                                        <div class="navbar">
-                                            <button class="btn btn-link" type="button" id="dropdownMenuButton2"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right"
-                                                aria-labelledby="dropdownMenuButton2">
-                                                <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
-                                                <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                    <div class="card mb-2 w-100" id="card-lista">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <img src="Federazione_dei_Liberali_(Italia,_1994).svg.png" class="mr-3"
+                                                alt="Candidate 1" id="logo-partiti">
+                                            <span>Nome Lista 2</span>
+                                            <div class="navbar">
+                                                <button class="btn btn-link" type="button" id="dropdownMenuButton3"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdownMenuButton3">
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-edit"></i>
+                                                        Modifica</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-trash"></i>
+                                                        Elimina</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1" id="logo-partiti">
-                                        <span>Nome Lista 1</span>
-                                        <div class="navbar">
-                                            <button class="btn btn-link" type="button" id="dropdownMenuButton2"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right"
-                                                aria-labelledby="dropdownMenuButton2">
-                                                <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
-                                                <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                    </div>
+                                    <div class="card mb-2 w-100" id="card-lista">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1"
+                                                id="logo-partiti">
+                                            <span>Nome Lista 3</span>
+                                            <div class="navbar">
+                                                <button class="btn btn-link" type="button" id="dropdownMenuButton4"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdownMenuButton4">
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-edit"></i>
+                                                        Modifica</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-trash"></i>
+                                                        Elimina</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </li>
-                                    
-                                </ul>
+                                    </div>
+                                    <div class="card mb-2 w-100" id="card-lista">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1"
+                                                id="logo-partiti">
+                                            <span>Nome Lista 4</span>
+                                            <div class="navbar">
+                                                <button class="btn btn-link" type="button" id="dropdownMenuButton5"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdownMenuButton5">
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-edit"></i>
+                                                        Modifica</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-trash"></i>
+                                                        Elimina</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </li>
-                        <!-- Altri candidati qui -->
-                    </ul>
-                </div>
+                        </div>
+                    </div>
+                    
 
+
+                    <div class="card card-candidato">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <div class="d-flex justify-content-between align-items-center w-100">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/50" class="mr-3" alt="Candidate 1">
+                                    <div>
+                                        <h5>Nome Candidato 1</h5>
+                                    </div>
+                                </div>
+                                <div class="navbar">
+                                    <button class="btn btn-link" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
+                                        <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-arrows-alt"></i> Muovi</a>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-info" data-toggle="modal" data-target="#addListModal1">
+                                    <i class="fas fa-plus-circle"></i> Aggiungi Lista
+                                </button>
+                                <div class="d-flex flex-wrap mt-2" id="liste-elenco">
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <img src="Patto_per_l'Italia.svg.png" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 1</span>
+                                                <div class="navbar">
+                                                    <button class="btn btn-link" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton2">
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <button class="btn btn-success" data-toggle="modal" data-target="#addCandidateModal" style="width: 100%;">
+                                                <i class="fas fa-user-plus"></i> Aggiungi Candidato di lista
+                                            </button>
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item">Candidato 1 Lista 1</li>
+                                                <li class="list-group-item">Candidato 2 Lista 1</li>
+                                                <li class="list-group-item">Candidato 3 Lista 1</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <img src="Federazione_dei_Liberali_(Italia,_1994).svg.png" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 2</span>
+                                                <div class="navbar">
+                                                    <button class="btn btn-link" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton3">
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <button class="btn btn-success" data-toggle="modal" data-target="#addCandidateModal" style="width: 100%;">
+                                                <i class="fas fa-user-plus"></i> Aggiungi Candidato di lista
+                                            </button>
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item">Candidato 1 Lista 2</li>
+                                                <li class="list-group-item">Candidato 2 Lista 2</li>
+                                                <li class="list-group-item">Candidato 3 Lista 2</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 3</span>
+                                                <div class="navbar">
+                                                    <button class="btn btn-link" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton4">
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <button class="btn btn-success" data-toggle="modal" data-target="#addCandidateModal" style="width: 100%;">
+                                                <i class="fas fa-user-plus"></i> Aggiungi Candidato di lista
+                                            </button>
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item">Candidato 1 Lista 3</li>
+                                                <li class="list-group-item">Candidato 2 Lista 3</li>
+                                                <li class="list-group-item">Candidato 3 Lista 3</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 4</span>
+                                                <div class="navbar">
+                                                    <button class="btn btn-link" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton5">
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <button class="btn btn-success" data-toggle="modal" data-target="#addCandidateModal" style="width: 100%;">
+                                                <i class="fas fa-user-plus"></i> Aggiungi Candidato di lista
+                                            </button>
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item">Candidato 1 Lista 4</li>
+                                                <li class="list-group-item">Candidato 2 Lista 4</li>
+                                                <li class="list-group-item">Candidato 3 Lista 4</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    <!-- Altri candidati qui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Candidate Modal -->
+    <div class="modal fade" id="addCandidateModal" tabindex="-1" role="dialog" aria-labelledby="addCandidateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCandidateModalLabel">Aggiungi Candidato di Lista</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form content to add a candidate -->
+                    <form>
+                        <div class="form-group">
+                            <label for="candidateName">Nome Candidato</label>
+                            <input type="text" class="form-control" id="candidateName" placeholder="Nome Candidato">
+                        </div>
+                        <div class="form-group">
+                            <label for="candidateParty">Partito</label>
+                            <input type="text" class="form-control" id="candidateParty" placeholder="Partito">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salva</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
