@@ -46,6 +46,30 @@ avanzate
 -elimina
 
 
-
-
 votante username = nome-cognome-[numero casuale di 4 o 5 caratteri]
+
+
+funzioni del sito:
+-Risposta standard
+-risposta con liste e candidati di lista
+-risposta con scheda bianca 
+-risposta a testo libero
+
+-Voto palese
+-voto segreto
+-voto disgiunto
+-voto pesato
+-voto tramite delega
+-voto con parità di genere
+
+
+
+Chiedere al panfo:
+-file htaccess
+-creazione pagine unendo pezzetti
+    -dove tenersi i pezzettini
+-come fare il backend
+-dove mettere l'id nella pagina
+-sistemi di sicurezza
+-nome utente unico
+-dataTables
