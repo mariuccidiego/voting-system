@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sito Semplice con Bootstrap</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        h5 {
+            margin: 0;
+        }
+
+        .navbar .btn-link {
+            color: black;
+        }
+
+        .list-group-item {
+            background-color: #f8f9fa;
+        }
+
+        .list-group-item .list-group {
+            margin-top: 15px;
+        }
+
+        #logo-partiti {
+            height: 50px;
+        }
+        #card-lista{
+            width: 21rem;
+        }
+        .candidati .card-candidato {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+        <!-- Contenuto Principale -->
+        <div class="content">
+            <div class="container mt-4">
+                <h1>Contenuto Principale</h1>
+                <p>Qui va il contenuto della pagina.</p>
+
+                <!-- Sezione Candidati -->
+                <div class="candidati mt-5">
+                    <h2>Candidati alla Votazione</h2>
+
+                    <div class="card card-candidato">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <div class="d-flex justify-content-between align-items-center w-100">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/50" class="mr-3" alt="Candidate 1">
+                                    <div>
+                                        <h5>Nome Candidato 1</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                
+                                <div class="d-flex flex-wrap mt-2" id="liste-elenco">
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <img src="Patto_per_l'Italia.svg.png" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 1</span>
+                                                
+                                            </div>
+                                            <hr>
+                                            
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 1 Lista 1
+                                                    
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 2 Lista 1
+                                                    
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 3 Lista 1
+                                                    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <img src="Federazione_dei_Liberali_(Italia,_1994).svg.png" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 2</span>
+                                            </div>
+                                            <hr>
+                                            
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 1 Lista 2
+                                                    
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 2 Lista 2
+                                                    
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 3 Lista 2
+                                                    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 3</span>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 4</span>
+                                                
+                                            </div>
+                                            <hr>
+                                            
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 1 Lista 4
+                                                    
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 2 Lista 4
+                                                    
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 3 Lista 4
+                                                    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card card-candidato">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <div class="d-flex justify-content-between align-items-center w-100">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/50" class="mr-3" alt="Candidate 1">
+                                    <div>
+                                        <h5>Nome Candidato 1</h5>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="mt-3">
+                                <div class="d-flex flex-wrap mt-2" id="liste-elenco">
+                                    <div class="card mr-2 mb-2" id="card-lista">
+                                        <div class="card-body d-flex align-items-center">
+                                            <img src="Patto_per_l'Italia.svg.png" class="mr-3" alt="Candidate 1"
+                                                id="logo-partiti">
+                                            <span>poartito fare per fermare il declino</span>
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- Aggiungi più liste qui -->
+                                    <div class="card mr-2 mb-2" id="card-lista">
+                                        <div class="card-body d-flex align-items-center">
+                                            <img src="Federazione_dei_Liberali_(Italia,_1994).svg.png" class="mr-3"
+                                                alt="Candidate 1" id="logo-partiti">
+                                            <span>Nome Lista 2</span>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2" id="card-lista">
+                                        <div class="card-body d-flex align-items-center">
+                                            <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1"
+                                                id="logo-partiti">
+                                            <span>Nome Lista 3</span>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2" id="card-lista">
+                                        <div class="card-body d-flex align-items-center">
+                                            <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1"
+                                                id="logo-partiti">
+                                            <span>Nome Lista 3</span>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                    
+
+
+                    <div class="card card-candidato">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <div class="d-flex justify-content-between align-items-center w-100">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/50" class="mr-3" alt="Candidate 1">
+                                    <div>
+                                        <h5>Nome Candidato 1</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                
+                                <div class="d-flex flex-wrap mt-2" id="liste-elenco">
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <img src="Patto_per_l'Italia.svg.png" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 1</span>
+                                                
+                                            </div>
+                                            <hr>
+                                            
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 1 Lista 1
+                                                    
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 2 Lista 1
+                                                    
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 3 Lista 1
+                                                    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <img src="Federazione_dei_Liberali_(Italia,_1994).svg.png" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 2</span>
+                                            </div>
+                                            <hr>
+                                            
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 1 Lista 2
+                                                    
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 2 Lista 2
+                                                    
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 3 Lista 2
+                                                    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 3</span>
+                                                
+                                            </div>
+                                            <hr>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="card mr-2 mb-2 card-lista" id="card-lista">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <img src="Democrazia_cristiana_logo.jpg" class="mr-3" alt="Candidate 1" id="logo-partiti">
+                                                <span>Nome Lista 4</span>
+                                                
+                                            </div>
+                                            <hr>
+                                            
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 1 Lista 4
+                                                    
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 2 Lista 4
+                                                    
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Candidato 3 Lista 4
+                                                    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    <!-- Altri candidati qui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Inclusione di jQuery e Popper.js per far funzionare il dropdown -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+
+</html>
