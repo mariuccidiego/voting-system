@@ -69,6 +69,7 @@ Chiedere al panfo:
 -creazione pagine unendo pezzetti
     -dove tenersi i pezzettini
 -come fare il backend
+-come fare sito.com/votazione/[cod votazione]
 -dove mettere l'id nella pagina
 -sistemi di sicurezza
 -nome utente unico
