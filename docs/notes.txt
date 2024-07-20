@@ -29,6 +29,12 @@ votazione
     -risposta libera
     -sondaggio (lista di proposte)
     -referendum
+
+
+    'candidato',
+        'sondaggio',
+        'referendum',
+        'testo_libero'
 ]
 -voto pesato
 -voto palese
