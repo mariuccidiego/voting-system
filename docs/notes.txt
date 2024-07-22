@@ -72,6 +72,7 @@ funzioni del sito:
 
 Chiedere al panfo:
 -file htaccess
+-è sbagliato usare un po di oggetti e un po no
 -creazione pagine unendo pezzetti
     -dove tenersi i pezzettini
 -come fare il backend
