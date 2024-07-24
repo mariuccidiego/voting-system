@@ -231,3 +231,6 @@ body {
   .candidati .card-candidato {
       margin-top: 10px;
   }
+  .alert {
+    margin-bottom: 0rem;
+  }
