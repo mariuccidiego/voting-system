@@ -1,8 +1,9 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/get_vote_id.php'; ?>
 <?php include 'includes/header.php'; ?>
+
 <body>
-<?php include 'includes/leftbar_votazione.php'; ?>
+    <?php include 'includes/leftbar_votazione.php'; ?>
 
     <!-- Contenuto della Pagina -->
     <div class="right-site">
@@ -93,9 +94,11 @@
             </div>
         </div>
     </div>
+    <?php include 'modals/toast_success.php'; ?>
 
     <?php include 'includes/scripts.php'; ?>
     <?php include 'includes/page_active.php'; ?>
 
 </body>
+
 </html>

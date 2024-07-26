@@ -13,12 +13,9 @@ https://codepen.io/piyushpd139/pen/PooPByb
 generali
 -Titolo
 -descrizione
--immagine
-
-data
 -Inizio
 -Fine
--time zone
+
 
 votazione
 -tipo votazione [
@@ -32,16 +29,20 @@ votazione
 
 
     'candidato',
-        'sondaggio',
-        'referendum',
-        'testo_libero'
+    'sondaggio',
+    'referendum',
+    'testo_libero'
 ]
 -voto pesato
 -voto palese
--scheda bianca
 -voto disgiunto
 -voto con parità di genere(Richiederà di specificare il sesso del candidato)
 -delega del voto
+
+voto
+-risposta testo libero
+-scheda bianca
+-max e min votazione
 
 email
 
@@ -70,14 +71,5 @@ funzioni del sito:
 
 
 
-Chiedere al panfo:
--file htaccess
--è sbagliato usare un po di oggetti e un po no
--creazione pagine unendo pezzetti
-    -dove tenersi i pezzettini
--come fare il backend
--come fare sito.com/votazione/[cod votazione]
--dove mettere l'id nella pagina
--sistemi di sicurezza
--nome utente unico
--dataTables
+ToDo
+-messaggio di successo quando viene creata una nuova votazione

@@ -8,6 +8,15 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="C:\xampp\htdocs\voting-system\template\styles.css" rel="stylesheet">
+    <style>
+        .toast-success {
+            background-color: #28a745;
+            color: white;
+        }
+        .toast-success .close {
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <!-- Barra Laterale -->
@@ -157,11 +166,28 @@
             </div>
         </div>
     </div>
+    <div aria-live="polite" aria-atomic="true" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+        <div class="toast toast-success" id="successToast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body d-flex align-items-center">
+                <i class="fas fa-check-circle mr-3"></i>
+                <span class="mr-3">Operazione avvenuta con successo!</span>
+                <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#successToast').toast({ delay: 4000 });
+            $('#successToast').toast('show');
+        });
+    </script>
 </body>
 
 </html>
