@@ -13,7 +13,7 @@ CREATE TABLE `tipo_votazione` (
 );
 
 CREATE TABLE `votazione` (
-    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY,
     `codice_votazione` BIGINT UNIQUE NULL,
     `titolo` VARCHAR(255) NOT NULL,
     `descrizione` TEXT NULL,

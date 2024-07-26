@@ -7,6 +7,6 @@
 		header('location: index.php');
 	}
 
-	$username = 'admin'; 
+	$username = $_SESSION['admin']; 
     $amministratore = Amministratore::createFromUsername($conn, $username);
 ?>

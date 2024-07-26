@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">Titolo Votazione</a>
+            <a class="navbar-brand" href="#"><?php echo htmlspecialchars($votazione->titolo); ?></a>
             <div class="ml-auto dropdown">
                 <a href="#" class="d-flex align-items-center text-white" id="profileDropdown" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
