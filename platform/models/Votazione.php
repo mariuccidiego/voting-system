@@ -1,5 +1,6 @@
 <?php
-class Votazione {
+include 'Votante.php';
+class Votazione{
     private $conn;
     private $table_name = "votazione";
 
@@ -30,33 +31,50 @@ class Votazione {
     public $link = null;
     public $tipo_votazione_id = 2;
     public $amministratore_username = null;
+    public $votanti = [];
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->conn = $db;
     }
 
-    public static function generaCodiceVotazione($conn) {
-    do {
-        // Genera un numero casuale a 6 cifre
-        $codice = sprintf('%06d', rand(0, 999999));
-        
-        // Query per controllare l'unicità del codice
-        $query = "SELECT COUNT(*) as count FROM votazione WHERE codice_votazione = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param('s', $codice);
+    public static function generaCodiceVotazione($conn)
+    {
+        do {
+            // Genera un numero casuale a 6 cifre
+            $codice = sprintf('%06d', rand(0, 999999));
+
+            // Query per controllare l'unicità del codice
+            $query = "SELECT COUNT(*) as count FROM votazione WHERE codice_votazione = ?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param('s', $codice);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+
+            // Verifica se il codice esiste già
+            $exists = $row['count'] > 0;
+        } while ($exists);  // Continua fino a trovare un codice unico
+
+        return $codice;
+    }
+
+    public function fetchVotanti() {
+        $query = "SELECT * FROM votante WHERE votazione_id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param('i', $this->id);
         $stmt->execute();
+
         $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        
-        // Verifica se il codice esiste già
-        $exists = $row['count'] > 0;
-    } while ($exists);  // Continua fino a trovare un codice unico
+        while ($row = $result->fetch_assoc()) {
+            $votante = new Votante($this->conn);
+            $votante->assignProperties($row);
+            $this->votanti[] = $votante;
+        }
+    }
 
-    return $codice;
-}
-
-
-    public function create() {
+    public function create()
+    {
         $query = "INSERT INTO " . $this->table_name . " 
         (id, codice_votazione, titolo, descrizione, immagine, inizio_votazione, fine_votazione, voto_segreto, 
         voto_disgiunto, voto_pesato, voto_tramite_delega, scheda_bianca, voto_per_sesso, risposta_testo_libero, 
@@ -68,7 +86,8 @@ class Votazione {
         $this->sanitize();
 
         // Assicurati che la stringa di tipo di bind_param corrisponda esattamente al numero di variabili
-        $stmt->bind_param('issssssiiiiiiiiiiiiiiiiisss',
+        $stmt->bind_param(
+            'issssssiiiiiiiiiiiiiiiiisss',
             $this->id,
             $this->codice_votazione,
             $this->titolo,
@@ -101,27 +120,31 @@ class Votazione {
         return $stmt->execute();
     }
 
-    public static function createFromId($db, $id) {
+    public static function createFromId($db, $id)
+    {
         $instance = new self($db);
         $instance->id = $id;
         $instance->readOne();
+        $instance->fetchVotanti();
         return $instance;
     }
 
-    public static function exists($db, $id) {
+    public static function exists($db, $id)
+    {
         $query = "SELECT COUNT(*) as count FROM votazione WHERE id = ?";
         $stmt = $db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
-    
+
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-    
+
         return $row['count'] > 0;
     }
-    
 
-    public function sanitize() {
+
+    public function sanitize()
+    {
         $this->id = htmlspecialchars(strip_tags($this->id));
         $this->codice_votazione = htmlspecialchars(strip_tags($this->codice_votazione));
         $this->titolo = htmlspecialchars(strip_tags($this->titolo));
@@ -151,7 +174,8 @@ class Votazione {
         $this->amministratore_username = htmlspecialchars(strip_tags($this->amministratore_username));
     }
 
-    public function assignProperties($row) {
+    public function assignProperties($row)
+    {
         $this->id = $row['id'];
         $this->codice_votazione = $row['codice_votazione'];
         $this->titolo = $row['titolo'];
@@ -182,7 +206,8 @@ class Votazione {
     }
 
     // Read one votazione
-    public function readOne() {
+    public function readOne()
+    {
         $query = "SELECT * FROM " . $this->table_name . " WHERE id = ? LIMIT 0,1";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param('i', $this->id);
@@ -197,7 +222,8 @@ class Votazione {
     }
 
     // Update votazione
-    public function update() {
+    public function update()
+    {
         $query = "UPDATE " . $this->table_name . " SET
             codice_votazione = ?,
             titolo = ?,
@@ -233,7 +259,8 @@ class Votazione {
         $this->sanitize();
 
         // bind values
-        $stmt->bind_param('issssssiiiiiiiiiiiiiiiisssi',
+        $stmt->bind_param(
+            'issssssiiiiiiiiiiiiiiiisssi',
             $this->codice_votazione,
             $this->titolo,
             $this->descrizione,

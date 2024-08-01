@@ -17,6 +17,7 @@
             </div>
         </div>
     </div>
+    <?php include 'modals/toast_success.php'; ?>
 
     <?php include 'includes/scripts.php'; ?>
     <?php include 'includes/page_active.php'; ?>

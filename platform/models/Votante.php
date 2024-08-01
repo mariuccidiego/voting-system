@@ -1,6 +1,7 @@
 <?php
 
-class Votante {
+class Votante
+{
     private $conn;
     private $table_name = "votante";
 
@@ -10,8 +11,8 @@ class Votante {
     public $username;
     public $pwd;
     public $email;
-    public $ruolo;
-    public $cf;
+    public $ruolo = null;
+    public $cf = null;
     public $peso_voto = 1;
     public $votato = false;
     public $votazione_id;
@@ -76,6 +77,9 @@ class Votante {
 
     // Update votante
     public function update() {
+        // Generate a username
+        $this->username = $this->generateUsername();
+
         $query = "UPDATE " . $this->table_name . " SET
             nome = ?, cognome = ?, username = ?, pwd = ?, email = ?, ruolo = ?, cf = ?, peso_voto = ?, votato = ?, votazione_id = ?
             WHERE id = ?";
@@ -93,4 +97,75 @@ class Votante {
         }
         return false;
     }
+
+    public function create() {
+        // Generate an 8-character random password
+        $this->pwd = $this->generateRandomPassword(8);
+
+        // Generate a username
+        $this->username = $this->generateUsername();
+
+        // Sanitize data
+        $this->sanitize();
+
+        // SQL query to insert the new voter
+        $query = "INSERT INTO " . $this->table_name . " (nome, cognome, username, pwd, email, ruolo, cf, peso_voto, votato, votazione_id)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = $this->conn->prepare($query);
+
+        // Bind values
+        $stmt->bind_param('sssssssiis', $this->nome, $this->cognome, $this->username, $this->pwd, $this->email, $this->ruolo, $this->cf, $this->peso_voto, $this->votato, $this->votazione_id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
+
+    // Helper method to generate a random password
+    private function generateRandomPassword($length = 8) {
+        $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        $password = '';
+        for ($i = 0; $i < $length; $i++) {
+            $password .= $characters[random_int(0, strlen($characters) - 1)];
+        }
+        return $password;
+    }
+
+    // Helper method to generate a username
+    private function generateUsername() {
+        $prefix = '';
+        if (!empty($this->nome)) {
+            // Use the entire 'nome' if it's less than 3 characters, otherwise use the first 3 characters
+            $prefix = substr($this->nome, 0, min(3, strlen($this->nome))) . '-';
+        }
+
+        // Replace spaces with hyphens in 'cognome'
+        $surname = str_replace(' ', '-', $this->cognome);
+        // Generate a random 3-digit number
+        $randomNumber = random_int(100, 999);
+
+        // Construct the username and convert it to lowercase
+        $username = $prefix . $surname . '-' . $randomNumber;
+
+        return strtolower($username);
+    }
+
+
+    public function deleteFromId($id) {
+        // Prepare the query
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+    
+        // Prepare the statement
+        $stmt = $this->conn->prepare($query);
+    
+        // Bind the ID parameter
+        $stmt->bind_param('i', $id);
+    
+        // Execute the query and return the result
+        return $stmt->execute();
+    }
+
+
 }
