@@ -49,7 +49,7 @@
                         aria-labelledby="pills-generali-tab">
                         <h2>Generali</h2>
 
-                        <form action="carica_modifiche.php" method="POST">
+                        <form action="carica_modifiche_votazione.php" method="POST">
                             <div class="form-group">
                                 <label for="title" class="form-label">Titolo <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="title" name="title"
@@ -98,7 +98,7 @@
                     <div class="tab-pane fade" id="pills-votazione" role="tabpanel"
                         aria-labelledby="pills-votazione-tab">
                         <h2>Votazione</h2>
-                        <form method="post" action="carica_modifiche.php">
+                        <form method="post" action="carica_modifiche_votazione.php">
                             <div class="form-group">
                                 <label for="tipo-votazione" class="form-label">Tipo di Votazione</label>
                                 <div id="tipo-votazione" class="ml-3">
@@ -165,7 +165,7 @@
                     <!-- Sezione Sicurezza -->
                     <div class="tab-pane fade" id="pills-voto" role="tabpanel" aria-labelledby="pills-voto-tab">
                         <h2>Configurazione Voto</h2>
-                        <form method="post" action="carica_modifiche.php">
+                        <form method="post" action="carica_modifiche_votazione.php">
 
                             <!-- Risposta Testo Libero e Scheda Bianca -->
                             <div class="form-check mb-3">
