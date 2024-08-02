@@ -1,5 +1,6 @@
 <?php
 include 'Votante.php';
+include 'Proposta.php';
 class Votazione{
     private $conn;
     private $table_name = "votazione";
@@ -32,6 +33,7 @@ class Votazione{
     public $tipo_votazione_id = 2;
     public $amministratore_username = null;
     public $votanti = [];
+    public $proposte = [];
 
     public function __construct($db)
     {
@@ -70,6 +72,20 @@ class Votazione{
             $votante = new Votante($this->conn);
             $votante->assignProperties($row);
             $this->votanti[] = $votante;
+        }
+    }
+
+    public function fetchProposte() {
+        $query = "SELECT * FROM proposta WHERE votazione_id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param('i', $this->id);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $proposta = new Proposta($this->conn);
+            $proposta->assignProperties($row);
+            $this->proposte[] = $proposta;
         }
     }
 
@@ -126,6 +142,7 @@ class Votazione{
         $instance->id = $id;
         $instance->readOne();
         $instance->fetchVotanti();
+        $instance->fetchProposte();
         return $instance;
     }
 
