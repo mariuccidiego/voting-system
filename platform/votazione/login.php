@@ -35,29 +35,29 @@ $votazione = Votazione::createFromId($conn, $votazione_id);
 </style>
 
 <body>
+
   <div class="container">
     <div class="row justify-content-center">
-      <div class="text-center m-3">
-        <img src="../resources/logo_vote.png" class="site-logo" alt="site logo">
+      <div class="col-md-8">
+        <h1 class="text-center my-3"><?php echo htmlspecialchars($votazione->titolo); ?></h1>
       </div>
       <div class="col-md-6">
         <div class="card mt-2">
           <div class="card-header text-center">
-            <h2>Login</h2>
+            <img src="logo_info.png" class="site-logo" alt="site logo">
           </div>
           <div class="card-body">
             <form action="login_auth.php" method="POST">
+            <input type="hidden" id="id" name="id" value="<?php echo $_GET['id']; ?>">
               <div class="mb-3">
                 <label for="username" class="form-label">Nome utente</label>
-                <input type="text" class="form-control" name="username" id="username"
-                  placeholder="Inserisci nome utente" required>
+                <input type="text" class="form-control" name="username" placeholder="Inserisci nome utente" required>
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" id="password"
-                  placeholder="Inserisci password" required>
+                <input type="password" class="form-control" name="password" placeholder="Inserisci password" required>
               </div>
-              <button type="submit" class="btn btn-primary w-100">Accedi alla piattaforma</button>
+              <button type="submit" class="btn btn-primary w-100">Accedi per votare</button>
             </form>
             <?php
             if (isset($_SESSION['error'])) {
