@@ -55,19 +55,29 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right"
                                                 aria-labelledby="dropdownMenuButton1">
-                                                <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Modifica</a>
-                                                <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Elimina</a>
+                                                <a class="dropdown-item modifica-opzione" data-id="<?php echo $proposta->id; ?>"
+                                                    data-titolo="<?php echo htmlspecialchars($proposta->titolo); ?>"
+                                                    data-desc_corta="<?php echo htmlspecialchars($proposta->desc_corta); ?>"
+                                                    data-descrizione="<?php echo htmlspecialchars($proposta->descrizione); ?>"
+                                                    data-toggle="modal" data-target="#modificaOpzioneModal"><i
+                                                        class="fas fa-edit"></i> Modifica</a>
+                                                <a class="dropdown-item elimina-opzione" data-id="<?php echo $proposta->id; ?>"
+                                                    data-toggle="modal" data-target="#confermaEliminaOpzioneModal"><i
+                                                        class="fas fa-trash"></i> Elimina</a>
                                             </div>
                                         </div>
                                     </div>
-                                    <?php if ($proposta->desc_corta!=null): ?>
-                                    <p class="description mb-1">
-                                    <?php echo htmlspecialchars($proposta->desc_corta); ?>
-                                    </p>
+                                    <?php if ($proposta->desc_corta != null): ?>
+                                        <p class="description mb-1">
+                                            <?php echo htmlspecialchars($proposta->desc_corta); ?>
+                                        </p>
                                     <?php endif; ?>
 
-                                    <?php if ($proposta->descrizione!=null): ?>
-                                    <a href="#" class="read-more">Leggi di più</a>
+                                    <?php if ($proposta->descrizione != null): ?>
+                                        <div id="id<?php echo $proposta->id ?>" class="collapse mt-3">
+                                            <?php echo htmlspecialchars($proposta->descrizione); ?>
+                                        </div>
+                                        <a href="#id<?php echo $proposta->id ?>" data-toggle="collapse">Leggi di più</a>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -80,7 +90,8 @@
             </div>
         </div>
     </div>
-
+    <?php include 'modals/elimina_opzione_modal.php'; ?>
+    <?php include 'modals/modifica_opzione_modal.php'; ?>
     <?php include 'modals/aggiungi_proposta_modal.php'; ?>
 
     <?php include 'modals/toast_success.php'; ?>
@@ -88,6 +99,31 @@
     <?php include 'includes/scripts.php'; ?>
     <?php include 'includes/page_active.php'; ?>
 
+    <script>
+        $(document).ready(function () {
+
+            $('.modifica-opzione').on('click', function () {
+                var id = $(this).data('id');
+                var titolo = $(this).data('titolo');
+                var desc_corta = $(this).data('desc_corta');
+                var descrizione = $(this).data('descrizione');
+
+                // Set the values in the edit modal form
+                $('#modificaOpzioneId').val(id);
+                $('#title-modifica').val(titolo);
+                $('#shortDescription-modifica').val(desc_corta);
+                $('#longDescription-modifica').val(descrizione);
+
+            });
+
+            // Delete button click event
+            $('.elimina-opzione').on('click', function () {
+                var id = $(this).data('id');
+                $('#delete-id').val(id);
+            });
+
+        });
+    </script>
 </body>
 
 </html>
