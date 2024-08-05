@@ -13,11 +13,13 @@
             background-color: #28a745;
             color: white;
         }
+
         .toast-success .close {
             color: white;
         }
     </style>
 </head>
+
 <body>
     <!-- Barra Laterale -->
     <div class="sidebar d-flex flex-column">
@@ -60,7 +62,8 @@
             <p><b>Inizio votazione:</b><br> 12:00 12/12/2024</p>
             <p><b>Fine votazione:</b> <br> 12:00 12/12/2024</p>
         </div>
-        <a href="lista_votazioni.html" class="btn btn-primary" id="indietro"> <i class="fas fa-angle-left"></i>Torna alle Votazioni</a>
+        <a href="lista_votazioni.html" class="btn btn-primary" id="indietro"> <i class="fas fa-angle-left"></i>Torna
+            alle Votazioni</a>
     </div>
 
     <!-- Contenuto della Pagina -->
@@ -84,81 +87,91 @@
         <!-- Contenuto Principale -->
         <div class="content">
             <div class="container mt-4">
-                <h1>Contenuto Principale</h1>
-                <p>Qui va il contenuto della pagina.</p>
+                <h1>Panoramica</h1>
                 <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                                Area Chart Example
-                            </div>
-                            <div class="card-body">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                                Area Chart Example
-                            </div>
-                            <div class="card-body">
-                            </div>
+                    <div class="col-md-12">
+                        <div class="alert alert-warning" role="alert">
+                            <strong>Finisci la configurazione della Votazione</strong>
+                            <p>Per poter avviare la votazione devi prima concludere la configurazione della votazione.</p>
+                            <a href="#" class="btn btn-warning">Configura Votazione</a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <div class="card h-100">
-                            <div class="card-header">
-                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                                Area Chart Example
-                            </div>
                             <div class="card-body">
+                                <h5 class="card-title">Start Date</h5>
+                                <p class="mb-0">Jul 11, 2024, 7:00:00 PM</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <div class="card h-100">
-                            <div class="card-header">
-                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                                Area Chart Example
-                            </div>
                             <div class="card-body">
+                                <h5 class="card-title">Start Date</h5>
+                                <p class="mb-0">Jul 11, 2024, 7:00:00 PM</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                                Area Chart Example
+                        <a href="#" class="card h-100 text-white bg-success text-center text-decoration-none d-flex flex-column justify-content-center align-items-center">
+                            <div class="card-body d-flex align-items-center">
+                                <h5 class="card-title d-flex align-items-center mb-0">
+                                    <i class="fas fa-play-circle fa-2x"></i>
+                                    <span class="ml-2">Avvia Votazione</span>
+                                </h5>
                             </div>
-                            <div class="card-body">
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-7 mb-3">
+                    <div class="col-md-8 mb-3">
                         <div class="card h-100">
-                            <div class="card-header">
-                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                                Area Chart Example
-                            </div>
                             <div class="card-body">
+                                <h5 class="card-title">URL della Votazione</h5>
+                                <div class="mb-3">
+                                    <label for="electionURL" class="form-label">URL Votazione</label>
+                                    <input type="text" class="form-control" id="electionURL"
+                                        value="https://quorumapp." readonly>
+                                    <small class="form-text text-muted ng-star-inserted"><i
+                                            class="fa fa-info-circle"></i>  Questo URL non sarà accessibile fino all'avvio della votazione.</small>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="shortURL" class="form-label">URL Corto</label>
+                                    <input type="text" class="form-control" id="shortURL" value="" readonly>
+                                    <small class="form-text text-muted ng-star-inserted"><i
+                                            class="fa fa-info-circle"></i>  Questo URL non sarà accessibile fino all'avvio della votazione</small>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="previewURL" class="form-label">URL Anteprima</label>
+                                    <input type="text" class="form-control" id="previewURL"
+                                        value="https://vote.electionrunner.com/preview/PpVD1/Alvp3uEXGbnKBTqV" readonly>
+                                </div>
+                                <div>
+                                    <a href="#">Click here to set up your organization's subdomain</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5 mb-3">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                                Area Chart Example
-                            </div>
+                    <div class="col-md-4 mb-3 h-100">
+                        <div class="card mb-3">
                             <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-cog"></i> Impostazioni</h5>
+                                <p class="mb-0">Gestisci le impostazioni della tua votazione nella sezione <a href="#">Impostazioni</a>.</p>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-book"></i> Documentazione</h5>
+                                <p class="mb-0">Consulta la nostra <a href="#">documentazione</a> per maggiori dettagli.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-headset"></i> Supporto</h5>
+                                <p class="mb-0">Hai bisogno di aiuto? Contatta il <a href="#">supporto tecnico</a>.</p>
                             </div>
                         </div>
                     </div>
@@ -183,7 +196,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('#successToast').toast({ delay: 4000 });
             $('#successToast').toast('show');
         });
