@@ -9,7 +9,36 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="C:\xampp\htdocs\voting-system\template\styles.css" rel="stylesheet">
 </head>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
 
+    .container {
+        flex: 1;
+        width: 95%;
+    }
+
+    .card-candidato {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .form-check-input {
+        transform: scale(2);
+        margin-top: 0.3rem;
+        margin-right: 0.5rem;
+    }
+
+    .form-check {
+        display: flex;
+        align-items: center;
+    }
+</style>
 <body>
 
         <!-- Contenuto Principale -->
@@ -21,8 +50,11 @@
                 <!-- Sezione Candidati -->
                 <div class="candidati mt-5">
                     <h2>Candidati alla Votazione</h2>
-
+                    <form action="voto_valid.php" method="POST" class="candidati">
                     <div class="card card-candidato">
+                        <div class="form-check mr-3">
+                            <input class="form-check-input" type="checkbox" name="voti[]">
+                        </div>
                         <div class="card-body d-flex flex-column align-items-start">
                             <div class="d-flex justify-content-between align-items-center w-100">
                                 <div class="d-flex align-items-center">
@@ -287,7 +319,9 @@
                     
                     
                     <!-- Altri candidati qui -->
+                </form>
                 </div>
+            
             </div>
         </div>
     </div>

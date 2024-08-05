@@ -49,7 +49,7 @@
                         aria-labelledby="pills-generali-tab">
                         <h2>Generali</h2>
 
-                        <form action="carica_modifiche_votazione.php" method="POST">
+                        <form action="modifica_votazione_generali.php" method="POST">
                             <div class="form-group">
                                 <label for="title" class="form-label">Titolo <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="title" name="title"
@@ -83,6 +83,8 @@
                         $voto_disgiunto_checked = $votazione->voto_disgiunto ? 'checked' : '';
                         $voto_per_sesso_checked = $votazione->voto_per_sesso ? 'checked' : '';
                         $voto_tramite_delega_checked = $votazione->voto_tramite_delega ? 'checked' : '';
+                        $scheda_bianca = $votazione->scheda_bianca ? 'checked' : '';
+                        $risposta_testo_libero = $votazione->risposta_testo_libero ? 'checked' : '';
 
                         $min_candidati = $votazione->min_candidati;
                         $max_candidati = $votazione->max_candidati;
@@ -98,7 +100,7 @@
                     <div class="tab-pane fade" id="pills-votazione" role="tabpanel"
                         aria-labelledby="pills-votazione-tab">
                         <h2>Votazione</h2>
-                        <form method="post" action="carica_modifiche_votazione.php">
+                        <form method="post" action="modifica_votazione.php">
                             <div class="form-group">
                                 <label for="tipo-votazione" class="form-label">Tipo di Votazione</label>
                                 <div id="tipo-votazione" class="ml-3">
@@ -165,15 +167,15 @@
                     <!-- Sezione Sicurezza -->
                     <div class="tab-pane fade" id="pills-voto" role="tabpanel" aria-labelledby="pills-voto-tab">
                         <h2>Configurazione Voto</h2>
-                        <form method="post" action="carica_modifiche_votazione.php">
+                        <form method="post" action="modifica_votazione_voto.php">
 
                             <!-- Risposta Testo Libero e Scheda Bianca -->
                             <div class="form-check mb-3">
-                                <input type="checkbox" class="form-check-input" id="risposta-testo-libero" name="risposta-testo-libero">
+                                <input type="checkbox" class="form-check-input" id="risposta-testo-libero" name="risposta-testo-libero" <?php echo $risposta_testo_libero; ?>>
                                 <label class="form-check-label" for="risposta-testo-libero">Risposta a testo libero</label>
                             </div>
                             <div class="form-check mb-3">
-                                <input type="checkbox" class="form-check-input" id="scheda-bianca" name="scheda_bianca">
+                                <input type="checkbox" class="form-check-input" id="scheda-bianca" name="scheda_bianca" <?php echo $scheda_bianca; ?>>
                                 <label class="form-check-label" for="scheda-bianca">Scheda Bianca</label>
                             </div>
 

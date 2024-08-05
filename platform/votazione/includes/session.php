@@ -20,5 +20,5 @@
     $votazione = Votazione::createFromId($conn, $votazione_id);
 
     $votante = new Votante($conn);
-    $votante->readFromId($_SESSION['votante']);
+    $votante->readFromUser($_SESSION['votante']);
 ?>

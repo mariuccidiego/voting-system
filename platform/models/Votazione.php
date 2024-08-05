@@ -80,14 +80,29 @@ class Votazione{
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param('i', $this->id);
         $stmt->execute();
-
+    
         $result = $stmt->get_result();
+        $proposteArray = [];
+    
         while ($row = $result->fetch_assoc()) {
             $proposta = new Proposta($this->conn);
             $proposta->assignProperties($row);
-            $this->proposte[] = $proposta;
+            $proposteArray[] = $proposta;
         }
+    
+        usort($proposteArray, function($a, $b) {
+            if ($a->titolo == "Scheda Bianca") {
+                return 1;
+            }
+            if ($b->titolo == "Scheda Bianca") {
+                return -1;
+            }
+            return 0;
+        });
+    
+        $this->proposte = $proposteArray;
     }
+    
 
     public function create()
     {

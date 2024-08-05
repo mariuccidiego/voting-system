@@ -58,10 +58,10 @@ class Votante
     }
 
     // Read one votante by id
-    public function readFromId($id) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE id = ? LIMIT 0,1";
+    public function readFromUser($user) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE username = ? LIMIT 0,1";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param('i', $id);
+        $stmt->bind_param('s', $user);
         $stmt->execute();
 
         $result = $stmt->get_result();
