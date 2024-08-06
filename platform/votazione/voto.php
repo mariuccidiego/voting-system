@@ -3,7 +3,7 @@
 <?php
 
 if ($votante->votato) {
-  header('location: gia_votato.php');
+    header('location: gia_votato.php');
 }
 ?>
 <style>
@@ -73,7 +73,7 @@ if ($votante->votato) {
 </style>
 
 <body>
-<div class="container">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h1 class="text-center my-3"><?php echo htmlspecialchars($votazione->titolo); ?></h1>
@@ -86,7 +86,8 @@ if ($votante->votato) {
                             <li>È consentito il voto <span class="highlight">disgiunto</span>.</li>
                         <?php endif; ?>
                         <?php if ($votazione->voto_pesato): ?>
-                            <li>È una votazione pesata e il peso del tuo voto è di <span class="highlight"><?php echo $votante->peso_voto; ?></span></li>
+                            <li>È una votazione pesata e il peso del tuo voto è di <span
+                                    class="highlight"><?php echo $votante->peso_voto; ?></span></li>
                         <?php endif; ?>
                         <?php if ($votazione->scheda_bianca): ?>
                             <li>È disponibile l'opzione <span class="highlight">scheda bianca</span>.</li>
@@ -94,8 +95,12 @@ if ($votante->votato) {
                         <?php if ($votazione->voto_per_sesso): ?>
                             <li>È una votazione con parità di genere</li>
                         <?php endif; ?>
-                        <li>È necessario selezionare almeno <span class="highlight"><?php echo $votazione->min_proposte; ?></span> proposta<?php echo $votazione->min_proposte > 1 ? 'e' : 'a'; ?>.</li>
-                        <li>Si possono selezionare fino a <span class="highlight"><?php echo $votazione->max_proposte; ?></span> proposta<?php echo $votazione->max_proposte > 1 ? 'e' : 'a'; ?>.</li>
+                        <li>È necessario selezionare almeno <span
+                                class="highlight"><?php echo $votazione->min_proposte; ?></span>
+                            proposta<?php echo $votazione->min_proposte > 1 ? 'e' : 'a'; ?>.</li>
+                        <li>Si possono selezionare fino a <span
+                                class="highlight"><?php echo $votazione->max_proposte; ?></span>
+                            proposta<?php echo $votazione->max_proposte > 1 ? 'e' : 'a'; ?>.</li>
                     </ul>
                     <p id="remaining-options" class="highlight"></p>
                 </div>
@@ -103,14 +108,16 @@ if ($votante->votato) {
             <?php if ($votazione->tipo_votazione_id == 1): // Candidato ?>
 
             <?php elseif ($votazione->tipo_votazione_id == 2): // Sondaggio ?>
-                <form id="votazione-form" action="voto_valid.php?id=<?php echo $_GET['id']; ?>" method="POST" class="candidati">
+                <form id="votazione-form" action="voto_valid.php?id=<?php echo $_GET['id']; ?>" method="POST"
+                    class="candidati w-100">
                     <?php if (!empty($votazione->proposte)): ?>
                         <?php foreach ($votazione->proposte as $proposta): ?>
                             <div class="card card-candidato mb-2">
                                 <div class="card-body d-flex flex-row align-items-center">
                                     <div class="form-check mr-3">
                                         <input class="form-check-input proposal-checkbox" type="checkbox" name="voti[]"
-                                            id="proposta<?php echo $proposta->id; ?>" value="<?php echo $proposta->id; ?>" data-titolo="<?php echo htmlspecialchars($proposta->titolo); ?>">
+                                            id="proposta<?php echo $proposta->id; ?>" value="<?php echo $proposta->id; ?>"
+                                            data-titolo="<?php echo htmlspecialchars($proposta->titolo); ?>">
                                     </div>
                                     <div class="d-flex flex-column w-100">
                                         <div class="d-flex justify-content-between align-items-center">
@@ -150,7 +157,7 @@ if ($votante->votato) {
 
     <?php include '../admin/includes/scripts.php'; ?>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const checkboxes = document.querySelectorAll('.proposal-checkbox');
             const remainingOptions = document.getElementById('remaining-options');
             const submitButton = document.querySelector('.invia-voto');
@@ -190,26 +197,26 @@ if ($votante->votato) {
                 }
             }
 
-            checkboxes.forEach(function(checkbox) {
+            checkboxes.forEach(function (checkbox) {
                 checkbox.addEventListener('change', updateRemainingOptions);
             });
 
             updateRemainingOptions();
 
-            submitButton.addEventListener('click', function(event) {
+            submitButton.addEventListener('click', function (event) {
                 if (submitButton.disabled) {
                     alert('Devi selezionare il numero corretto di opzioni prima di inviare il voto.');
                 } else {
                     const selectedOptions = Array.from(document.querySelectorAll('.proposal-checkbox:checked')).map(checkbox => checkbox.dataset.titolo);
                     const confirmationMessage = `Hai selezionato le seguenti opzioni:\n\n${selectedOptions.join('\n')}\n\nConfermi l'invio del voto?`;
-                    
+
                     if (confirm(confirmationMessage)) {
                         document.getElementById('votazione-form').submit();
                     }
                 }
             });
 
-            document.getElementById('votazione-form').addEventListener('submit', function(event) {
+            document.getElementById('votazione-form').addEventListener('submit', function (event) {
                 const selectedCount = document.querySelectorAll('.proposal-checkbox:checked').length;
                 const isSchedaBiancaSelected = Array.from(checkboxes).some(checkbox => checkbox.checked && checkbox.dataset.titolo === schedaBiancaTitle);
 

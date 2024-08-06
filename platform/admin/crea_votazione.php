@@ -15,7 +15,7 @@
             }
     
             if(isset($_POST['end-date'])){
-                $votazione->fine_votazionee = $_POST['end-date'];
+                $votazione->fine_votazione = $_POST['end-date'];
             }
             Amministratore::createFromUsername($conn, $username);
             $id_vot = Votazione::generaCodiceVotazione($conn);

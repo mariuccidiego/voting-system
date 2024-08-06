@@ -20,6 +20,33 @@ if (isset($_SESSION['votante'])) {
 
 $votazione = Votazione::createFromId($conn, $votazione_id);
 
+// Supponiamo di aver recuperato queste date dal database
+$start_time_from_db = '2024-08-06 10:00:00'; // Esempio di data di inizio
+$end_time_from_db = '2024-08-6 15:46:00';   // Esempio di data di fine
+
+if($end_time_from_db == "0000-00-00 00:00:00"){
+  $end_time_from_db="3000-00-00 00:00:00";
+}
+
+if($start_time_from_db == "0000-00-00 00:00:00"){
+  echo "Accesso negato";
+}
+
+// Ottenere l'orario corrente in UTC
+$current_time_utc = new DateTime("now", new DateTimeZone("UTC"));
+
+// Convertire le date del database in oggetti DateTime
+$start_time_utc = new DateTime($start_time_from_db, new DateTimeZone("UTC"));
+$end_time_utc = new DateTime($end_time_from_db, new DateTimeZone("UTC"));
+
+// Controllare se l'orario corrente è tra l'inizio e la fine della votazione
+if ($current_time_utc >= $start_time_utc && $current_time_utc <= $end_time_utc) {
+    // L'utente può accedere alla pagina
+    echo "Accesso consentito";
+} else {
+    // L'utente non può accedere alla pagina
+    echo "Accesso negato";
+}
 ?>
 <?php include '../admin/includes/header.php'; ?>
 <style>

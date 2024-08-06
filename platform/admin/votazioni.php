@@ -99,6 +99,30 @@
             }
         });
     });
+
+    document.getElementById('create-election-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const startDateInput = document.getElementById('start-date');
+        const endDateInput = document.getElementById('end-date');
+
+        // Convert the local date-time to UTC date-time
+        const startDate = new Date(startDateInput.value);
+        const endDate = new Date(endDateInput.value);
+
+        // Format the dates to ISO 8601 with Z (UTC)
+        if(startDateInput.value){
+            const startDateUTC = startDate.toISOString();
+            startDateInput.value = startDateUTC.substring(0, 19);
+        }
+
+        if(endDateInput.value){
+            const endDateUTC = endDate.toISOString();
+            endDateInput.value = endDateUTC.substring(0, 19);
+        }
+
+        event.target.submit();
+    });
 </script>
 
 </html>

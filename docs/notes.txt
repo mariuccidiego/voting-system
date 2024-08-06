@@ -77,3 +77,13 @@ funzioni del sito:
 
 ToDo
 -messaggio di successo quando viene creata una nuova votazione
+
+
+
+risultati:
+-grafico a torta votanti non votanti (% di affluenza)
+-grafico a barre verticale proposte
+-elenco persone che hanno votato
+-elenco persone che non hanno votato
+-elenco persone che non hanno votato
+-grafico linea quando hanno votato

@@ -9,4 +9,34 @@
         $('#successToast').toast({ delay: 4000 });
         $('#successToast').toast('show');
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+            // Ottieni il fuso orario dell'utente
+            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            console.log(userTimezone);
+
+            // Funzione per convertire UTC a fuso orario dell'utente
+            function convertUTCToUserTime(utcDateStr, timezone) {
+                const utcDate = new Date(utcDateStr);
+                return utcDate.toLocaleString('it-IT', { timeZone: timezone });
+            }
+
+            // Funzione per aggiornare il testo degli elementi con una classe specifica
+            function updateTimeElementsByClass(className) {
+                const elements = document.querySelectorAll(`.${className}`);
+                elements.forEach(element => {
+                    const utcDateStr = element.getAttribute('data-utc');
+                    if (utcDateStr === "NaN" || !utcDateStr) {
+                        element.textContent = "Non Stabilita";
+                    } else {
+                        const utcDate = utcDateStr + "Z";
+                        element.textContent = convertUTCToUserTime(utcDate, userTimezone);
+                    }
+                });
+            }
+
+            // Aggiorna gli elementi con le classi start-time ed end-time
+            updateTimeElementsByClass('start-time');
+            updateTimeElementsByClass('end-time');
+        });
 </script>
