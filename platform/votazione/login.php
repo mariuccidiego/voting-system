@@ -5,31 +5,34 @@ include '../models/Votazione.php';
 
 if (!isset($_GET['id']) || trim($_GET['id']) == '') {
   header('location: error_id.php');
+  die;
 }
 
 $votazione_id = $_GET['id'];
 
 if (!Votazione::exists($conn, $votazione_id)) {
   header('location: error_id.php');
+  die;
 }
 
 
 if (isset($_SESSION['votante'])) {
   header('location:voto.php?id=' . $_GET['id']);
+  die;
 }
 
 $votazione = Votazione::createFromId($conn, $votazione_id);
 
 // Supponiamo di aver recuperato queste date dal database
-$start_time_from_db = '2024-08-06 10:00:00'; // Esempio di data di inizio
-$end_time_from_db = '2024-08-6 15:46:00';   // Esempio di data di fine
+$start_time_from_db = $votazione->inizio_votazione; // Esempio di data di inizio
+$end_time_from_db = $votazione->fine_votazione;   // Esempio di data di fine
 
-if($end_time_from_db == "0000-00-00 00:00:00"){
-  $end_time_from_db="3000-00-00 00:00:00";
+if ($end_time_from_db == "0000-00-00 00:00:00") {
+  $end_time_from_db = "3000-00-00 00:00:00";
 }
 
-if($start_time_from_db == "0000-00-00 00:00:00"){
-  echo "Accesso negato";
+if ($start_time_from_db == "0000-00-00 00:00:00") {
+  header('location: votazione_chiusa.php');
 }
 
 // Ottenere l'orario corrente in UTC
@@ -41,11 +44,10 @@ $end_time_utc = new DateTime($end_time_from_db, new DateTimeZone("UTC"));
 
 // Controllare se l'orario corrente è tra l'inizio e la fine della votazione
 if ($current_time_utc >= $start_time_utc && $current_time_utc <= $end_time_utc) {
-    // L'utente può accedere alla pagina
-    echo "Accesso consentito";
+
 } else {
-    // L'utente non può accedere alla pagina
-    echo "Accesso negato";
+  // L'utente non può accedere alla pagina
+  header('location: votazione_chiusa.php');
 }
 ?>
 <?php include '../admin/includes/header.php'; ?>
@@ -75,7 +77,7 @@ if ($current_time_utc >= $start_time_utc && $current_time_utc <= $end_time_utc) 
           </div>
           <div class="card-body">
             <form action="login_auth.php" method="POST">
-            <input type="hidden" id="id" name="id" value="<?php echo $_GET['id']; ?>">
+              <input type="hidden" id="id" name="id" value="<?php echo $_GET['id']; ?>">
               <div class="mb-3">
                 <label for="username" class="form-label">Nome utente</label>
                 <input type="text" class="form-control" name="username" placeholder="Inserisci nome utente" required>

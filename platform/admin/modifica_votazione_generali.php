@@ -21,6 +21,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $votazione->fine_votazione = $_POST['end-date'];
     }
 
+    if(isset($_POST['start-date']) && isset($_POST['end-date'])){
+
+        $start_time_utc = new DateTime($_POST['start-date'], new DateTimeZone("UTC"));
+        $end_time_utc = new DateTime($_POST['end-date'], new DateTimeZone("UTC"));
+
+        if($start_time_utc >= $end_time_utc){
+            $votazione->fine_votazione ="0000-00-00 00:00:00";
+        }
+    }
+
     if (isset($_POST['tipo_votazione'])) {
         $votazione->tipo_votazione_id = (int)$_POST['tipo_votazione'];
     }

@@ -67,6 +67,7 @@
     <?php include 'includes/footer.php'; ?>
     <?php include 'modals/crea_votazione_modal.php'; ?>
     <?php include 'includes/scripts.php'; ?>
+    <?php include 'modals/toast_success.php'; ?>
 
 </body>
 <script>

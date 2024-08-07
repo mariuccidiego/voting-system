@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 session_destroy();
 
-	            header('location: grazie.php');
+	            header('location: grazie.php?id='.$_GET['id']);
             } else {
                 echo "Nessuna proposta selezionata.";
             }

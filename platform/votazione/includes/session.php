@@ -11,10 +11,12 @@
     
     if (!Votazione::exists($conn, $votazione_id)) {
         header('location: error_id.php');
+        die;
     }
 
     if(!isset($_SESSION['votante']) || trim($_SESSION['votante']) == ''){
 		header('location: login.php?id=' . $_GET['id']);
+        die;
 	}
 
     $votazione = Votazione::createFromId($conn, $votazione_id);

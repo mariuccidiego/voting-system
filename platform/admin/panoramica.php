@@ -24,7 +24,8 @@
                         <p>Controlla che la impostazioni della votazione siano corrette, quando crei una nuova votazione
                             alcune impostazioni vengono assegnate in automatico. Ricontrolla che sia tutto corretto per
                             iniziare la tua votazione.</p>
-                        <a href="#" class="btn btn-warning">Configura Votazione</a>
+                        <a href="impostazioni.php?id= <?php echo $_SESSION['id_votazione'] ?>"
+                            class="btn btn-warning">Configura Votazione</a>
                     </div>
                 </div>
             </div>
@@ -48,26 +49,89 @@
                         <div class="card-body">
                             <h5 class="card-title">Fine Votazione</h5>
                             <p id="end-time" class="mb-0 end-time" data-utc="<?php
-                            if ($votazione->fine_votazione == "0000-00-00 00:00:00") {
+                            if ($votazione->fine_votazione == " 0000-00-00 00:00:00") {
                                 echo "NaN";
                             } else {
-                                echo htmlspecialchars($votazione->fine_votazione);
+                                echo
+                                    htmlspecialchars($votazione->fine_votazione);
                             }
                             ?>"></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <a href="#"
-                        class="card h-100 text-white bg-success text-center text-decoration-none d-flex flex-column justify-content-center align-items-center">
-                        <div class="card-body d-flex align-items-center">
-                            <h5 class="card-title d-flex align-items-center mb-0">
-                                <i class="fas fa-play-circle fa-2x"></i>
-                                <span class="ml-2">Avvia Votazione</span>
-                            </h5>
-                        </div>
-                    </a>
-                </div>
+
+                <?php
+                $start_time_from_db = $votazione->inizio_votazione;
+                $end_time_from_db = $votazione->fine_votazione;
+
+                if ($end_time_from_db == "0000-00-00 00:00:00") {
+                    $end_time_from_db = "3000-00-00 00:00:00";
+                }
+
+                if ($start_time_from_db == "0000-00-00 00:00:00") {
+                    ?>
+                    <div class="col-md-4 mb-3">
+                        <form action="inizio_fine_votazione.php" method="post"
+                            class="d-flex flex-column justify-content-center align-items-center h-100 w-100">
+                            <button type="submit" name="avvia"
+                                class="card h-100 w-100 text-white bg-success text-center text-decoration-none d-flex flex-column justify-content-center align-items-center border-0">
+                                <div class="card-body d-flex align-items-center">
+                                    <h5 class="card-title d-flex align-items-center mb-0">
+                                        <i class="fas fa-play-circle fa-2x"></i>
+                                        <span class="ml-2">Avvia Votazione</span>
+                                    </h5>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+                    <?php
+                }else{
+
+                // Ottenere l'orario corrente in UTC
+                $current_time_utc = new DateTime("now", new DateTimeZone("UTC"));
+
+                // Convertire le date del database in oggetti DateTime
+                $start_time_utc = new DateTime($start_time_from_db, new DateTimeZone("UTC"));
+                $end_time_utc = new DateTime($end_time_from_db, new DateTimeZone("UTC"));
+
+                // Controllare se l'orario corrente è tra l'inizio e la fine della votazione
+                if ($current_time_utc >= $start_time_utc && $current_time_utc <= $end_time_utc) {
+                    ?>
+                    <div class="col-md-4 mb-3">
+                        <form action="inizio_fine_votazione.php" method="post"
+                            class="d-flex flex-column justify-content-center align-items-center h-100 w-100">
+                            <button type="submit" name="ferma"
+                                class="card h-100 w-100 text-white bg-danger text-center text-decoration-none d-flex flex-column justify-content-center align-items-center border-0">
+                                <div class="card-body d-flex align-items-center">
+                                    <h5 class="card-title d-flex align-items-center mb-0">
+                                        <i class="fa fa-pause-circle fa-2x"></i>
+                                        <span class="ml-2">Ferma Votazione</span>
+                                    </h5>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <div class="col-md-4 mb-3">
+                        <form action="inizio_fine_votazione.php" method="post"
+                            class="d-flex flex-column justify-content-center align-items-center h-100 w-100">
+                            <button type="submit" name="avvia"
+                                class="card h-100 w-100 text-white bg-success text-center text-decoration-none d-flex flex-column justify-content-center align-items-center border-0">
+                                <div class="card-body d-flex align-items-center">
+                                    <h5 class="card-title d-flex align-items-center mb-0">
+                                        <i class="fas fa-play-circle fa-2x"></i>
+                                        <span class="ml-2">Avvia Votazione</span>
+                                    </h5>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+                    <?php
+                }}
+                ?>
+
             </div>
 
             <div class="row">
@@ -105,7 +169,8 @@
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-cog"></i> Impostazioni</h5>
                             <p class="mb-0">Gestisci le impostazioni della tua votazione nella sezione <a
-                                    href="#">Impostazioni</a>.</p>
+                                    href="impostazioni.php?id= <?php echo $_SESSION['id_votazione'] ?>">Impostazioni</a>.
+                            </p>
                         </div>
                     </div>
                     <div class="card mb-3">

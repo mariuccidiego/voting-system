@@ -67,7 +67,7 @@
                                             <?php endif; ?>
                                             <td>
                                                 <button class="btn btn-primary btn-sm edit-button"
-                                                    data-id="<?php echo $votante->id; ?>"
+                                                    data-id="<?php echo $votante->username; ?>"
                                                     data-nome="<?php echo htmlspecialchars($votante->nome); ?>"
                                                     data-cognome="<?php echo htmlspecialchars($votante->cognome); ?>"
                                                     data-email="<?php echo htmlspecialchars($votante->email); ?>"

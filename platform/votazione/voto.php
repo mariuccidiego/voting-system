@@ -3,7 +3,7 @@
 <?php
 
 if ($votante->votato) {
-    header('location: gia_votato.php');
+    header('location: gia_votato.php?id='. $_GET['id']);
 }
 ?>
 <style>
@@ -152,7 +152,6 @@ if ($votante->votato) {
 
 
     <a href="logout.php"> Elimina</a>
-    </div>
     <?php include '../admin/includes/footer.php'; ?>
 
     <?php include '../admin/includes/scripts.php'; ?>

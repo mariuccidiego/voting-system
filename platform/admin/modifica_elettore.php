@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['id'])) {
 
-        $votante->readFromId($_POST['id']);
+        $votante->readFromUser($_POST['id']);
 
         if (isset($_POST['nome'])) {
             $votante->nome = $_POST['nome'];

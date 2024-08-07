@@ -90,7 +90,7 @@ class Votante
         $this->sanitize();
 
         // bind values
-        $stmt->bind_param('sssssssiisi', $this->nome, $this->cognome, $this->username, $this->pwd, $this->email, $this->ruolo, $this->cf, $this->peso_voto, $this->votato, $this->votazione_id, $this->id);
+        $stmt->bind_param('sssssssiiii', $this->nome, $this->cognome, $this->username, $this->pwd, $this->email, $this->ruolo, $this->cf, $this->peso_voto, $this->votato, $this->votazione_id, $this->id);
 
         if ($stmt->execute()) {
             return true;
@@ -115,7 +115,7 @@ class Votante
         $stmt = $this->conn->prepare($query);
 
         // Bind values
-        $stmt->bind_param('sssssssiis', $this->nome, $this->cognome, $this->username, $this->pwd, $this->email, $this->ruolo, $this->cf, $this->peso_voto, $this->votato, $this->votazione_id);
+        $stmt->bind_param('sssssssiii', $this->nome, $this->cognome, $this->username, $this->pwd, $this->email, $this->ruolo, $this->cf, $this->peso_voto, $this->votato, $this->votazione_id);
 
         if ($stmt->execute()) {
             return true;
@@ -136,9 +136,12 @@ class Votante
     // Helper method to generate a username
     private function generateUsername() {
         $prefix = '';
-        if (!empty($this->nome)) {
-            // Use the entire 'nome' if it's less than 3 characters, otherwise use the first 3 characters
-            $prefix = substr($this->nome, 0, min(3, strlen($this->nome))) . '-';
+        if (!ctype_digit($this->cognome)) {
+            if (!empty($this->nome)) {
+                // Use the entire 'nome' if it's less than 3 characters, otherwise use the first 3 characters
+                $name_sp = str_replace(' ', '-', $this->nome);
+                $prefix = substr($name_sp, 0, min(3, strlen($name_sp))) . '-';
+            }
         }
 
         // Replace spaces with hyphens in 'cognome'
