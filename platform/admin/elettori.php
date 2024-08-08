@@ -18,8 +18,8 @@
                     <button class="btn btn-success" data-toggle="modal" data-target="#aggElettoreModal">
                         <i class="fas fa-user-plus"></i> Aggiungi Elettore
                     </button>
-                    <button class="btn btn-primary">
-                        <i class="fas fa-file-import"></i> Importa Elettore
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#importaElettoriModal">
+                    <i class="fas fa-file-import"></i> Importa Elettore
                     </button>
                 </div>
 
@@ -29,13 +29,14 @@
                         Lista Utenti votanti
                     </div>
                     <div class="card-body">
-                        <table id="datatablesSimple" class="display">
+                        <table id="datatablesSimple" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>Nome Utente</th>
                                     <th>Nome</th>
                                     <th>Cognome</th>
                                     <th>Email</th>
+                                    <th>Password</th>
                                     <?php if ($votazione->voto_pesato): ?>
                                         <th>Peso Voto</th>
                                     <?php endif; ?>
@@ -48,6 +49,7 @@
                                     <th>Nome</th>
                                     <th>Cognome</th>
                                     <th>Email</th>
+                                    <th>Password</th>
                                     <?php if ($votazione->voto_pesato): ?>
                                         <th>Peso Voto</th>
                                     <?php endif; ?>
@@ -62,6 +64,7 @@
                                             <td><?php echo htmlspecialchars($votante->nome); ?></td>
                                             <td><?php echo htmlspecialchars($votante->cognome); ?></td>
                                             <td><?php echo htmlspecialchars($votante->email); ?></td>
+                                            <td><?php echo htmlspecialchars($votante->pwd); ?></td>
                                             <?php if ($votazione->voto_pesato): ?>
                                                 <td><?php echo htmlspecialchars($votante->peso_voto); ?></td>
                                             <?php endif; ?>
@@ -100,6 +103,30 @@
     <?php include 'modals/toast_success.php'; ?>
     <?php include 'includes/scripts.php'; ?>
     <?php include 'includes/page_active.php'; ?>
+
+    <div class="modal fade" id="importaElettoriModal" tabindex="-1" aria-labelledby="importaElettoriModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="importaElettoriModalLabel">Importa Elettori da CSV</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Chiudi">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="import-voter-form" action="importa_elettori.php" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="file_csv" class="form-label">Carica il file CSV <span class="text-danger">*</span></label>
+                            <input type="file" class="form-control" id="file_csv" name="file_csv" accept=".csv" required>
+                        </div>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Chiudi</button>
+                        <button type="submit" class="btn btn-success">Importa</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         $(document).ready(function () {
             $('#datatablesSimple').DataTable({

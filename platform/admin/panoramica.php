@@ -1,11 +1,6 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/get_vote_id.php'; ?>
 <?php include 'includes/header.php'; ?>
-<style>
-    .alert-warning {
-        border-color: #ffdc72;
-    }
-</style>
 
 <body>
     <?php include 'includes/leftbar_votazione.php'; ?>

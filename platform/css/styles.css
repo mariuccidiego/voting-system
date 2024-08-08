@@ -241,3 +241,6 @@ body {
   .toast-success .close {
     color: white !important;
   }
+  .alert-warning {
+    border-color: #ffdc72;
+}

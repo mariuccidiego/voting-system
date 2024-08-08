@@ -1,0 +1,32 @@
+numero voti
+
+SELECT vp.proposta_id, p.titolo AS titolo_proposta, COUNT(vp.proposta_id) AS voti
+FROM voto_proposta vp
+JOIN proposta p ON vp.proposta_id = p.id
+WHERE vp.votazione_id = 459427
+GROUP BY p.id, p.titolo
+ORDER BY voti DESC;
+
+
+voto pesato
+
+SELECT p.id AS proposta_id, p.titolo AS titolo_proposta, SUM(v.peso_voto) AS voti_pesati
+FROM voto_proposta vp
+JOIN proposta p ON vp.proposta_id = p.id
+JOIN votante v ON vp.votante_id = v.id
+WHERE vp.votazione_id = 459427
+GROUP BY p.id, p.titolo
+ORDER BY voti_pesati DESC;
+
+
+voto pesato con numero di voti
+
+SELECT p.id AS proposta_id, p.titolo AS titolo_proposta, 
+       COUNT(vp.id) AS numero_voti, 
+       SUM(v.peso_voto) AS voti_pesati
+FROM voto_proposta vp
+JOIN proposta p ON vp.proposta_id = p.id
+JOIN votante v ON vp.votante_id = v.id
+WHERE vp.votazione_id = 459427
+GROUP BY p.id, p.titolo
+ORDER BY voti_pesati DESC;
